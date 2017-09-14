@@ -1,7 +1,7 @@
 var config = require('./config.json');
 var DbHelper = require('./db');
 var dbHelper = new DbHelper(config.db, null, null);
-var server = require('http').createServer();
+var server = require('https').createServer();
 var io = require('socket.io')(server, {
     serveClient: false,
     pingInterval: 10000,
