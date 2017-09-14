@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('q').Promise;
 
 function DbHelper(dbUrl,errCallback, sucCallback) {
-    mongoose.connect(dbUrl || 'mongodb://localhost/test',
+    mongoose.connect(dbUrl || 'mongodb://localhost/push_text',
         {useMongoClient: true}, function (err, res) {
         if (err) {
             if (typeof errCallback === 'function') {

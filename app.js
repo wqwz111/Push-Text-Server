@@ -20,8 +20,18 @@ io.on('connection', function (socket) {
         });
     });
 
-    socket.on('logout', function() {
-        socket.emit('logged-out', null);
+    socket.on('logout', function(req, ack) {
+        var userId = req.user_id;
+        dbHelper.getCurrentRoom(userId).then(function (currRoom) {
+            if (currRoom) {
+                var currRoomNo = currRoom.roomNo;
+                dbHelper.leaveRoom(currRoomNo, userId).then(function() {
+                    console.log("leave room " + currRoomNo + " success.");
+                    ack && ack();
+                });
+            }
+            socket.emit('logged-out', null);
+        });
     });
 
     socket.on('enter-room', function (req, ack) {
@@ -63,7 +73,7 @@ io.on('connection', function (socket) {
 
     socket.on('new-message', function (req, ack) {
         dbHelper.getCurrentRoom(req.user_id).then(function (currRoom) {
-            socket.emit('broadcast', req.msg);
+            socket.to(currRoom.roomNo).emit('broadcast', req.msg);
             dbHelper.pushMessage(currRoom.roomNo, req.msg).then (function (room) {
                 ack && ack(room.messages);
             });
