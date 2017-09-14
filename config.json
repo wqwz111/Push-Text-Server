@@ -1,0 +1,4 @@
+{
+    "db": "mongodb://localhost/push_text",
+    "server_port": 3000
+}

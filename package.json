@@ -1,0 +1,24 @@
+{
+  "name": "push-text-server",
+  "version": "1.0.0",
+  "description": "This is the backend of Push Text(Chrome extension).",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wqwz111/Push-Text-Server.git"
+  },
+  "author": "Leo Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wqwz111/Push-Text-Server/issues"
+  },
+  "homepage": "https://github.com/wqwz111/Push-Text-Server#readme",
+  "dependencies": {
+    "mongoose": "^4.11.11",
+    "q": "^1.5.0",
+    "socket.io": "^2.0.3"
+  }
+}
