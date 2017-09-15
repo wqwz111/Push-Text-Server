@@ -1,7 +1,8 @@
 var config = require('./config.json');
+var app = require('express')();
 var DbHelper = require('./db');
 var dbHelper = new DbHelper(config.db, null, null);
-var server = require('http').createServer();
+var server = require('http').createServer(app);
 var io = require('socket.io')(server, {
     serveClient: false,
     pingInterval: 10000,
@@ -10,6 +11,20 @@ var io = require('socket.io')(server, {
 });
 server.listen(process.env.PORT || config.port);
 
+var qiniu = require("qiniu");
+
+app.get('/api/qiniuUpToken', function (req, res) {
+    var mac = new qiniu.auth.digest.Mac(config.qiniu_access_key, config.qiniu_secret_key);
+
+    var options = {
+        scope: config.qiniu_buckey,
+        expires: 12*3600 // 12小时
+    };
+    var putPolicy = new qiniu.rs.PutPolicy(options);
+    var uploadToken = putPolicy.uploadToken(mac);
+    console.log('生成上传密钥: ' + uploadToken);
+    res.status(200).send({token: uploadToken});
+});
 
 io.on('connection', function (socket) {
 
