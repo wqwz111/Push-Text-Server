@@ -27,6 +27,8 @@ app.get('/api/qiniuUpToken', function (req, res) {
 });
 
 app.get('/api/clearUnusedRooms', function (req, res) {
+    dbHelper.clearUsers();
+
     dbHelper.clearUnusedRooms(24*3600*1000).then(function (rooms) {
         res.status(200).send("Rooms cleared success. " + rooms.length + " room(s) left.");
     }, function (err) {

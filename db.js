@@ -54,6 +54,10 @@ DbHelper.prototype.deleteUser = function (uid) {
     return this.User.remove({_id: uid});
 };
 
+DbHelper.prototype.clearUsers = function () {
+    return this.User.remove();
+};
+
 DbHelper.prototype.enterRoom = function (roomNumber, userId) {
     var Room = this.Room;
 
