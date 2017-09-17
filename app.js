@@ -26,6 +26,14 @@ app.get('/api/qiniuUpToken', function (req, res) {
     res.status(200).send({token: uploadToken});
 });
 
+app.get('/api/clearUnusedRooms', function (req, res) {
+    dbHelper.clearUnusedRooms(24*3600*1000).then(function (rooms) {
+        res.status(200).send("Rooms cleared success. " + rooms.length + " room(s) left.");
+    }, function (err) {
+        res.status(200).send("No room removed.");
+    });
+});
+
 io.on('connection', function (socket) {
 
     socket.on('login', function (req, ack) {
