@@ -55,7 +55,7 @@ DbHelper.prototype.deleteUser = function (uid) {
 };
 
 DbHelper.prototype.clearUsers = function () {
-    return this.User.remove();
+    return this.User.remove({});
 };
 
 DbHelper.prototype.enterRoom = function (roomNumber, userId) {
@@ -90,6 +90,7 @@ DbHelper.prototype.getCurrentRoom = function (userId) {
 };
 
 DbHelper.prototype.clearUnusedRooms = function (someTimeAgo) {
+    this.User.remove({});
     var timeBefore = Date.now() - someTimeAgo;
     return this.Room.deleteMany({createdTime: {$lte: new Date(timeBefore)}}).exec();
 };
