@@ -87,7 +87,7 @@ DbHelper.prototype.getCurrentRoom = function (userId) {
 
 DbHelper.prototype.clearUnusedRooms = function (someTimeAgo) {
     var timeBefore = Date.now() - someTimeAgo;
-    return this.Room.deleteMany({createdTime: {$lte: timeBefore}}).exec();
+    return this.Room.deleteMany({createdTime: {$lte: new Date(timeBefore)}}).exec();
 };
 
 DbHelper.prototype.pushMessage = function (roomNumber, message) {
