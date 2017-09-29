@@ -1,5 +1,5 @@
 # Push-Text-Server
-Push Text (Chrome extension) 的服务器端程序.
+[Push Text](https://github.com/wqwz111/Push-Text) (Chrome extension) 的服务器端程序.
 
 ### 使用方法
 
