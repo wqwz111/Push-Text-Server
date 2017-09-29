@@ -17,7 +17,7 @@ app.get('/api/qiniuUpToken', function (req, res) {
     var mac = new qiniu.auth.digest.Mac(config.qiniu_access_key, config.qiniu_secret_key);
 
     var options = {
-        scope: config.qiniu_buckey,
+        scope: config.qiniu_bucket,
         expires: 12*3600 // 12小时
     };
     var putPolicy = new qiniu.rs.PutPolicy(options);
