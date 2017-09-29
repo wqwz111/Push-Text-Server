@@ -96,7 +96,7 @@ io.on('connection', function (socket) {
 
     socket.on('new-message', function (req, ack) {
         dbHelper.getCurrentRoom(req.user_id).then(function (currRoom) {
-            socket.to(currRoom.roomNo).emit('broadcast', req.msg);
+            io.in(currRoom.roomNo).emit('broadcast', req.msg);
             dbHelper.pushMessage(currRoom.roomNo, req.msg).then (function (room) {
                 ack && ack(room.messages);
             });
