@@ -1,7 +1,0 @@
-{
-    "db": "mongodb://localhost/push_text",
-    "server_port": 3000,
-    "qiniu_access_key": "<your_access_key>",
-    "qiniu_secret_key": "<your_secret_key>",
-    "qiniu_bucket": "<your_bucket_name>"
-}
