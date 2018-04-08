@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  db:
+    container_name: db
+    image: mongo:latest
+    ports:
+      - 27017:27017
+  pt:
+    build: ./Push-Text-Server
+    image: wqwz111/push-text:latest
+    volumes:
+      - /ssl-conf:/ssl-conf
+    ports:
+      - 443:443
+    depends_on:
+      - db
