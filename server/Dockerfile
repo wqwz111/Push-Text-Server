@@ -2,8 +2,7 @@ FROM node:latest
 
 WORKDIR /push-text
 
-RUN apt-get update
-RUN apt-get install -y nginx
+RUN apt-get update && apt-get install -y nginx
 
 COPY . /push-text
 RUN npm install && npm ls
