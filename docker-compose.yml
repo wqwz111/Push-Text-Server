@@ -11,7 +11,7 @@ services:
     volumes:
       - /ssl-conf:/ssl-conf
     env_file:
-      - server_config.env
+      - ./server_config.env
     ports:
       - 443:443
     depends_on:
