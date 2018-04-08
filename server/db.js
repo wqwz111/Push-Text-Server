@@ -3,7 +3,7 @@ mongoose.Promise = require('q').Promise;
 
 function DbHelper(dbUrl,errCallback, sucCallback) {
     mongoose.connect(dbUrl || 'mongodb://localhost/push_text',
-        {useMongoClient: true}, function (err, res) {
+        function (err, res) {
         if (err) {
             if (typeof errCallback === 'function') {
                 errCallback(err);
