@@ -6,7 +6,7 @@ services:
     ports:
       - 27017:27017
   pt:
-    build: ./Push-Text-Server
+    build: ./server
     image: wqwz111/push-text:latest
     volumes:
       - /ssl-conf:/ssl-conf
