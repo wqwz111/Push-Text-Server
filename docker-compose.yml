@@ -6,10 +6,12 @@ services:
     ports:
       - 27017:27017
   pt:
-    build: ./server
+    # build: ./server
     image: wqwz111/push-text:latest
     volumes:
       - /ssl-conf:/ssl-conf
+    env_file:
+      - server_config.env
     ports:
       - 443:443
     depends_on:
