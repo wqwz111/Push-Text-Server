@@ -9,7 +9,7 @@ var io = require('socket.io')(server, {
     pintTimeout: 5000,
     cookie: false
 });
-server.listen(process.env.PORT || config.port);
+server.listen(process.env.PORT || config.server_port);
 
 var qiniu = require("qiniu");
 
