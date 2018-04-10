@@ -16,6 +16,7 @@ services:
       - ./server_config.env
     ports:
       - 443:443
+      - 3000:3000
     networks: 
       - network1
     depends_on:
