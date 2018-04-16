@@ -4,6 +4,7 @@
 ### 使用方法
 #### 使用Docker环境
 * 安装`Docker`[安装方法](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-convenience-script)
+* 安装`Docker Compose`[安装方法](https://docs.docker.com/compose/install/#install-compose)
 * 修改`server_config.env`
 * 如需配置nginx将https请求反向代理给nodejs，则需要新建配置目录，并将ssl证书的`.cert`文件和`.key`文件以及nginx的代理https配置文件`ssl.conf`放入其中
 * 新建配置目录的方法，在终端输入:
